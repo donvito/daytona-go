@@ -1,6 +1,6 @@
 # Daytona Go
 
-This project uses the Daytona SDK to create and manage sandboxes securely.
+This project demonstrates how to run a Go application in a Daytona sandbox.
 
 ## Setup
 
@@ -9,21 +9,14 @@ This project uses the Daytona SDK to create and manage sandboxes securely.
    ```
    DAYTONA_API_KEY=your_daytona_api_key_here
    ```
-3. Install required dependencies:
+3. Build the Go application:
    ```
-   pip install -r requirements.txt
+   cd app
+   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o app .
+   ```
+4. Deploy the Go application to Daytona:
+
+   ```
+   python main.py
    ```
 
-## Usage
-
-Run the main script:
-
-```
-python main.py
-```
-
-## Security Notes
-
-- The API key is stored in an environment variable to keep it out of the codebase
-- The `.env` file is included in `.gitignore` to prevent accidental commits
-- For production use, consider using a more secure secret management system 
